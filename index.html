@@ -16,7 +16,7 @@
       <div class="container">
          <div class="cart">
             <div class="col-md-12 col-lg-10 mx-auto">
-               <div class="cart-item">
+               <div id="first-cart-item" class="cart-item">
                   <div class="row">
                      <div class="col-md-7 center-item">
                         <img src="images/product-1.png" alt="">
@@ -30,12 +30,12 @@
                            <button class="btn btn-default"><span id="increaseProduct"><i class="fas fa-plus"></i></span></button>
                         </div>
                         <h5>$ <span id="productPrice">1219</span></h5>
-                        <img src="images/remove.png" alt="" class="remove-item">
+                        <img src="images/remove.png" alt="" id="first-remove-item" class="remove-item">
                      </div>
                   </div>
                </div>
 
-               <div class="cart-item">
+               <div id="second-cart-item" class="cart-item">
                   <div class="row">
                      <div class="col-md-7 center-item mx-auto">
                         <img src="images/product-2.png" alt="">
@@ -49,7 +49,7 @@
 
                         </div>
                         <h5>$ <span id="productPrice2">59</span></h5>
-                        <img src="images/remove.png" alt="" class="remove-item">
+                        <img src="images/remove.png" alt="" id="second-remove-item"  class="remove-item">
                      </div>
                   </div>
                </div>
@@ -59,7 +59,7 @@
 
                      <div class="col-md-8">
                         <h5>Subtotal: </h5>
-                        <h5>Tax:</h5>
+                        <h5> 2% Tax:</h5>
                         <h5>Total:</h5>
                      </div>
 
@@ -79,65 +79,72 @@
    </section>
 
    <script>
-      
+      //remove cart section
+      const removeItem = document.getElementById("first-remove-item");
+      removeItem.addEventListener('click',()=>{
+         document.getElementById("first-cart-item").style.display = "none";
+      })
+      const removeItem2 = document.getElementById("second-remove-item");
+      removeItem2.addEventListener('click',()=>{
+         document.getElementById("second-cart-item").style.display = "none";
+      })
 
+      //increase first product quantity and price
       const increaseBtn = document.getElementById("increaseProduct");
       increaseBtn.addEventListener('click', ()=>{
          quantityPriceIncrease("productCount","productPrice",1219)
       })
-
+      //decrese first product quantity and price
       const decreaseBtn = document.getElementById("decreaseProduct");
       decreaseBtn.addEventListener('click', ()=>{
       quantityAndPriceDecrese("productCount","productPrice",1219) 
 
-      
-
       })
-      
+      //increase second product quantity and price
       const increaseBtn2 = document.getElementById("increaseProduct2");
       increaseBtn2.addEventListener('click',()=>{
          quantityPriceIncrease("productCount2","productPrice2",59)
       })
-
+      //decrease second product quantity and price
       const decreaseBtn2 = document.getElementById("decreaseProduct2");
       decreaseBtn2.addEventListener('click', ()=>{
          quantityAndPriceDecrese("productCount2","productPrice2",59)
       })
 
-     
-
+      
+      //Price and quantity add
        function quantityPriceIncrease(quantityId, priceId,price){
-         var productCount = document.getElementById(quantityId).value;
-         var productNumber =parseFloat(productCount);
+         const productCount = document.getElementById(quantityId).value;
+         const productNumber =parseFloat(productCount);
          document.getElementById(quantityId).value = productNumber + 1 ;
-         var productPrice = document.getElementById(priceId).innerText;
-         var productPriceNumber = parseFloat(productPrice);
+         const productPrice = document.getElementById(priceId).innerText;
+         const productPriceNumber = parseFloat(productPrice);
          document.getElementById(priceId).innerText = productPriceNumber + price;
       
-         var subTotal = document.getElementById("subtotalPrice").innerText;
-         var subTotalNumber = parseFloat(subTotal)
-         var subTotalPrice = document.getElementById("subtotalPrice").innerText = subTotalNumber + price;
-         var taxPrice = document.getElementById("taxPrice").innerText;
-         var taxNumber = parseFloat(taxPrice);
-         var totalTax = document.getElementById("taxPrice").innerText = (subTotalPrice*2)/100;
-         var totalPrice = document.getElementById("totalPrice").innerText = subTotalNumber + price + totalTax;
+         const subTotal = document.getElementById("subtotalPrice").innerText;
+         const subTotalNumber = parseFloat(subTotal)
+         const subTotalPrice = document.getElementById("subtotalPrice").innerText = subTotalNumber + price;
+         const taxPrice = document.getElementById("taxPrice").innerText;
+         const taxNumber = parseFloat(taxPrice);
+         const totalTax = document.getElementById("taxPrice").innerText = (subTotalPrice*2)/100;
+         const totalPrice = document.getElementById("totalPrice").innerText = subTotalNumber + price + totalTax;
       }
-
+      //Price and quantity remove
      function quantityAndPriceDecrese(productId, priceId,price) {
-         var productCount = document.getElementById(productId).value;
-         var productNumber =parseFloat(productCount);
+         const productCount = document.getElementById(productId).value;
+         const productNumber =parseFloat(productCount);
          document.getElementById(productId).value = productNumber -1 ;
-         var productPriceDecrease = document.getElementById( priceId).innerText;
-         var productPriceNumber = parseFloat(productPriceDecrease);
+         const productPriceDecrease = document.getElementById( priceId).innerText;
+         const productPriceNumber = parseFloat(productPriceDecrease);
          document.getElementById( priceId).innerText =productPriceNumber - price;
 
-         var subTotal = document.getElementById("subtotalPrice").innerText;
-         var subTotalNumber = parseFloat(subTotal)
-         var subTotalPrice = document.getElementById("subtotalPrice").innerText = subTotalNumber - price;
-         var taxPrice = document.getElementById("taxPrice").innerText;
-         var taxNumber = parseFloat(taxPrice);
-         var totalTax = document.getElementById("taxPrice").innerText = (subTotalPrice*2)/100;
-         var totalPrice = document.getElementById("totalPrice").innerText = (subTotalNumber - price) + totalTax;
+         const subTotal = document.getElementById("subtotalPrice").innerText;
+         const subTotalNumber = parseFloat(subTotal)
+         const subTotalPrice = document.getElementById("subtotalPrice").innerText = subTotalNumber - price;
+         const taxPrice = document.getElementById("taxPrice").innerText;
+         const taxNumber = parseFloat(taxPrice);
+         const totalTax = document.getElementById("taxPrice").innerText = (subTotalPrice*2)/100;
+         const totalPrice = document.getElementById("totalPrice").innerText = (subTotalNumber - price) + totalTax;
      }
 
    </script>
