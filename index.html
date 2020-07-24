@@ -120,7 +120,6 @@
          const productPrice = document.getElementById(priceId).innerText;
          const productPriceNumber = parseFloat(productPrice);
          document.getElementById(priceId).innerText = productPriceNumber + price;
-      
          const subTotal = document.getElementById("subtotalPrice").innerText;
          const subTotalNumber = parseFloat(subTotal)
          const subTotalPrice = document.getElementById("subtotalPrice").innerText = subTotalNumber + price;
@@ -133,11 +132,13 @@
      function quantityAndPriceDecrese(productId, priceId,price) {
          const productCount = document.getElementById(productId).value;
          const productNumber =parseFloat(productCount);
-         document.getElementById(productId).value = productNumber -1 ;
-         const productPriceDecrease = document.getElementById( priceId).innerText;
+         
+         if (productNumber>0) {
+            document.getElementById(productId).value = productNumber -1 ;
+            const productPriceDecrease = document.getElementById( priceId).innerText;
          const productPriceNumber = parseFloat(productPriceDecrease);
          document.getElementById( priceId).innerText =productPriceNumber - price;
-
+         
          const subTotal = document.getElementById("subtotalPrice").innerText;
          const subTotalNumber = parseFloat(subTotal)
          const subTotalPrice = document.getElementById("subtotalPrice").innerText = subTotalNumber - price;
@@ -145,6 +146,7 @@
          const taxNumber = parseFloat(taxPrice);
          const totalTax = document.getElementById("taxPrice").innerText = (subTotalPrice*2)/100;
          const totalPrice = document.getElementById("totalPrice").innerText = (subTotalNumber - price) + totalTax;
+         }
      }
 
    </script>
