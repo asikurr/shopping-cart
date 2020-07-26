@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><span id="decreaseProduct"><i class="fas fa-minus"></i></span></button>
-                           <input type="text" class="form-control text-center" id="productCount" value="1" readonly>
-                           <button class="btn btn-default"><span id="increaseProduct"><i class="fas fa-plus"></i></span></button>
+                           <button id="decreaseProduct" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input type="text" class="form-control text-center" id="productCount" value="1" >
+                           <button id="increaseProduct" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$ <span id="productPrice">1219</span></h5>
+                        <h5 >$ <span id="productPrice">1219</span> </h5>
                         <img src="images/remove.png" alt="" id="first-remove-item" class="remove-item">
                      </div>
                   </div>
@@ -59,7 +59,7 @@
 
                      <div class="col-md-8">
                         <h5>Subtotal: </h5>
-                        <h5> 2% Tax:</h5>
+                        <h5> 10% Tax:</h5>
                         <h5>Total:</h5>
                      </div>
 
@@ -77,8 +77,8 @@
          </div>
       </div>
    </section>
-
-   <script>
+   <script src="custom.js"></script>
+   <!-- <script>
       //remove cart section
       const removeItem = document.getElementById("first-remove-item");
       removeItem.addEventListener('click',()=>{
@@ -149,7 +149,7 @@
          }
      }
 
-   </script>
+   </script> -->
 </body>
 
 </html>
